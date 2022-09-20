@@ -1,3 +1,4 @@
 <template>
-  <div>Home</div>
+  <h1>Skills</h1>
 </template>
+
