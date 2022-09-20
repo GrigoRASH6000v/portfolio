@@ -1,0 +1,27 @@
+*{
+  font-size: 10px;
+  font-family: 'Gilroy-Regular';
+  box-sizing: border-box;
+}
+#app {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  height: 100vh;
+  background-color: $black-1;
+}
+ul{
+  list-style: none;
+  padding: 0;
+}
+a{
+  color: initial;
+  text-decoration: none;
+}
+button{
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+h1,h2,h3,h4,h5,h6{
+  margin: 0;
+}

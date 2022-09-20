@@ -1,0 +1,29 @@
+.btn {
+    position: relative;
+  border: 0.1rem solid $accent-1;
+  padding: 1rem 2rem;
+  color: $accent-1;
+  font-size: 1.4rem;
+  z-index: 2;
+  cursor: pointer;
+  overflow: hidden;
+  &::before{
+    z-index: -1;
+    transition-duration: .3s;
+    transition-property: width;
+    content: "";
+    left: -1rem;
+    top: 0;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    background-color: $accent-1;
+    transform: skew(-10deg);
+  }
+  &:hover::before{
+    width: calc(100% + 2rem);
+  }
+  &:hover{
+    color: $black-2;
+  }
+}
