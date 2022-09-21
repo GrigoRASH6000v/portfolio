@@ -37,7 +37,6 @@ export default {
   align-items: center;
   justify-content: flex-start;
   height: 100%;
-  padding: 9rem 5rem;
   &__greeting {
     font-size: 8rem;
     margin-bottom: 5rem;
@@ -49,7 +48,6 @@ export default {
     font-size: inherit;
     color: $white;
     font-family: inherit;
-
     &:hover {
       color: $accent-1;
       animation: deformation 1s ease-in-out;

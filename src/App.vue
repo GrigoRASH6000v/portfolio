@@ -16,5 +16,6 @@ export default {
 .main{
   height: 100%;
   overflow-y: auto;
+  padding: 9rem 5rem;
 }
 </style>
