@@ -17,6 +17,9 @@ a{
   color: initial;
   text-decoration: none;
 }
+pre{
+  margin: 0;
+}
 button{
   background-color: transparent;
   border: none;
@@ -24,4 +27,83 @@ button{
 }
 h1,h2,h3,h4,h5,h6{
   margin: 0;
+}
+.tag{
+  position: relative;
+  &:before{
+    top: -2rem;
+    left: -1rem;
+    position: absolute;
+    font-weight: 400;
+    // color: #515150;
+    color: $gray;
+    font-size: 2rem;
+    font-family: 'Solena';
+    line-height: 2rem;
+  }
+  &:after{
+    bottom: -2rem;
+    left: -1rem;
+    position: absolute;
+    font-weight: 400;
+    color: $gray;
+    font-size: 2rem;
+    font-family: 'Solena';
+    line-height: 2rem;
+  }
+}
+.tag--h1{
+  &:before{
+    content: "<h1>";
+  }
+  &:after{
+    content: "</h1>";
+  }
+}
+
+.tag--h2{
+  &:before{
+    content: "<h2>";
+  }
+  &:after{
+    content: "</h2>";
+  }
+}
+.tag--p{
+  &:before{
+    content: "<p>";
+  }
+  &:after{
+    content: "</p>";
+  }
+}
+.tag--section{
+  &:before{
+    left: -2rem;
+    content: "<section>";
+  }
+  &:after{
+    left: -2rem;
+    content: "</section>";
+  }
+}
+.tag--main{
+  &:before{
+    content: "<main>";
+    top: 1rem;
+    left: 1rem;
+  }
+  &:after{
+    content: "</main>";
+    bottom: 1rem;
+    left: 1rem;
+  }
+}
+.tag--form{
+  &:before{
+    content: "<form>";
+  }
+  &:after{
+    content: "</form>";
+  }
 }

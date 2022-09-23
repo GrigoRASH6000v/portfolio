@@ -1,32 +1,38 @@
 <template>
-  <section class="section-contacts">
+  <section class="tag tag--section section-contacts">
     <div class="section-contacts__form">
-      <h2 class="title-2">
-        Контакты
-      </h2>
-      <p class="description">
+      <h2
+        class="tag tag--h2 text-animate title-2"
+        aria-label="Контакты"
+      />
+
+      <p class="tag tag--p description">
         Люблю разнообразные и интересные задачи, но готов поработать и с легаси.
         Если заинтересовала мое кандидатура, напишите мне на почту или в соц
         сети.
       </p>
       <my-form
+        class="tag tag--form"
         :model="form"
         :rules="rules"
         :submit="sendForm"
       >
         <my-input
+          required
           name="name"
           placeholder="Имя"
           type="text"
           v-model="form.name"
         />
         <my-input
+          required
           name="email"
           placeholder="Email"
           type="email"
           v-model="form.email"
         />
         <my-input
+          name="message"
           placeholder="Сообщение"
           type="textarea"
           v-model="form.message"
@@ -47,6 +53,7 @@
 <script>
 import myForm from "@/components/my-form/form";
 import myInput from "@/components/my-form/input";
+import textAnimate from "@/helpers/textAnimate";
 export default {
   components: {
     "my-form": myForm,
@@ -62,31 +69,22 @@ export default {
       rules: {
         name: {
           type: "no-empty",
-          isValid: true,
         },
         email: {
           type: "valid",
           regExp:
             /^([a-zA-Z0-9_-]+\.)*[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*\.[a-zA-Z]{2,6}$/,
-          isValid: true,
         },
       },
     };
   },
   methods: {
-
-    isInvalid(field) {
-      return !this.validationForm[field].isValid;
-    },
-    clearValid(field) {
-      if (!this.validationForm[field].isValid)
-        this.validationForm[field].isValid = true;
-    },
     sendForm() {
-      // if (this.checkForm(this.form)) {
-      //   console.log("as");
-      // }
+     console.log('send')
     },
+  },
+  mounted() {
+    textAnimate('.text-animate')
   },
 };
 </script>
@@ -128,33 +126,5 @@ export default {
     grid-area: btn;
     justify-self: flex-end;
   }
-  // &__wrp {
-  //   display: grid;
-  //   grid-template-columns: 1fr 1fr;
-  //   gap: 2rem;
-  //   grid-template-areas:
-  //     "name email"
-  //     "message message"
-  //     ". btn";
-  // }
-
-  // .form__input-inner {
-  //   width: 100%;
-  // }
-  // .form__input-wrp:nth-child(1) {
-  //   grid-area: name;
-  // }
-  // .form__input-wrp:nth-child(2) {
-  //   grid-area: email;
-  // }
-  // .form__input-wrp:nth-child(3) {
-  //   grid-area: message;
-  //   margin-bottom: 2rem;
-  // }
-  // .btn {
-  //   width: 100%;
-  //   grid-area: btn;
-  //   justify-self: flex-end;
-  // }
 }
 </style>

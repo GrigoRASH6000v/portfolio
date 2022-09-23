@@ -1,7 +1,9 @@
 <template>
   <navigation />
-  <main class="main">
-    <router-view />
+  <main class="tag tag--main main">
+    <transition>
+      <router-view />
+    </transition>
   </main>
 </template>
 <script>

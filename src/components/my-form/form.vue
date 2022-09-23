@@ -1,9 +1,10 @@
 <template>
   <div class="form">
     <component
-      :class="{'input--isInvalid': isInvalid(element)}"
+      :class="{ 'input--isInvalid': getInvalidStatus(element) }"
+      @input="clearClass(element)"
       :is="element"
-      v-for="(element, idx) in $slots.default()"
+      v-for="(element, idx) in this.$slots.default()"
       :key="idx"
     />
     <component
@@ -29,37 +30,62 @@ export default {
         console.error("Warning! The handler function is not assigned"),
     },
   },
+  data() {
+    return {
+      formElements: this.createFormElements()
+    };
+  },
   methods: {
-    submitHandler() {
-      if(this.checkForm(this.model)){
-        this.submit()
-      }
+    clearClass(element) {
+      const name = this.getElementName(element)
+      if(!this.formElements[name]) return
+      if (this.formElements[name].isInvalid) this.formElements[name].isInvalid = false;
     },
-    isInvalid(element){
-      const name = element.props.name
-      if(element.props.name) return !this.rules[name].isValid
+    createFormElements() {
+      return this.$slots.default().reduce((acc, el) => {
+        if (el.props.hasOwnProperty("required")) {
+          const name = this.getElementName(el);
+          acc[name] = {
+            isInvalid: false,
+          };
+        }
+        return acc;
+      },{});
+    },
+    getInvalidStatus(el){
+      const status = this.formElements[this.getElementName(el)]
+      if(status !== undefined){
+        return this.formElements[this.getElementName(el)].isInvalid
+      }
       return false
     },
-    checkForm(form) {
-      const formArray = Object.entries(form);
-      return formArray
-        .map((el) => {
-          const rule = this.rules[el[0]];
-          if (!rule) return true;
-          const type = rule.type;
-          if (type === "no-empty") {
-            if (!el[1]) rule.isValid = false;
-            return !!el[1];
-          }
-          if (type === "valid") {
-            if (!rule.regExp.test(el[1])) rule.isValid = false;
-            return rule.regExp.test(el[1]);
-          }
-        }).every((el) => Boolean(el));
+    getElementName(el){
+      return el.props.name
     },
-  },
-  mounted() {
-   // console.log(this.rules[this.$slots.default()[0].props.name].isValid)
+    fieldsValidation(arr) {
+      arr.forEach((el) => {
+        const { key, value } = el;
+        if (!value) this.formElements[key].isInvalid = true;
+      });
+    },
+    submitHandler() {
+      const result = this.checkForm();
+      if (result) {
+        this.submit();
+      }
+    },
+    checkForm() {
+      const formArray = Object.entries(this.rules);
+      const resultArray = formArray.map((el) => {
+        const key = el[0];
+        const { type, regExp } = el[1];
+        const value = this.model[key];
+        if (type === "no-empty") return { key, value: !!value };
+        if (type === "valid") return { key, value: regExp.test(value) };
+      });
+      this.fieldsValidation(resultArray);
+      return resultArray.every((el) => el.value);
+    },
   },
 };
 </script>
