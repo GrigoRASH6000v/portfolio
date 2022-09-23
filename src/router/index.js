@@ -1,8 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
+
+
+
 import About from "@/views/About.vue";
 import Skills from "@/views/Skills.vue";
 import Works from "@/views/Works.vue";
-import Contacts from "@/views/Works.vue";
+import Contact from "@/views/Contact.vue";
 
 const routes = [
   {
@@ -13,6 +16,7 @@ const routes = [
     path: "/about",
     name: "About",
     component: About,
+  
   },
   {
     path: "/skills",
@@ -20,11 +24,12 @@ const routes = [
     component: Skills,
   },
   {
-    path: "/сontacts",
-    name: "Contacts",
-    component: Contacts,
+    path: "/contact",
+    name: "Contact",
+    component: Contact,
   },
 ];
+
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

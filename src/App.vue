@@ -1,7 +1,9 @@
 <template>
   <navigation />
-  <main class="main">
-    <router-view />
+  <main class="tag tag--main main">
+    <transition>
+      <router-view />
+    </transition>
   </main>
 </template>
 <script>
@@ -16,5 +18,6 @@ export default {
 .main{
   height: 100%;
   overflow-y: auto;
+  padding: 9rem 5rem;
 }
 </style>

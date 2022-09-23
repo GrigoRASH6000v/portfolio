@@ -34,3 +34,22 @@
     font-style: normal;
     font-display: swap;
 }
+
+//Raissey
+
+// @font-face {
+//     font-family: 'Raissey';
+//     src: url('../fonts/Raissey/Raissey.woff') format('woff');
+//     src: url('../fonts/Raissey/Raissey.woff2') format('woff2');
+//     font-style: normal;
+//     font-display: swap;
+// }
+
+@font-face {
+    font-family: 'Solena';
+    src: url('../fonts/Solena/Solena-Regular.woff2') format('woff2'),
+        url('../fonts//Solena/Solena-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
