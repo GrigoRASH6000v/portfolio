@@ -12,6 +12,15 @@ export default {
   components: {
     navigation,
   },
+  methods: {
+    async getData(){
+      const response = await this.$axios.get('http://localhost:8626/api/users')
+      console.log(response)
+    }
+  },
+  mounted() {
+    this.getData()
+  },
 };
 </script>
 <style>
