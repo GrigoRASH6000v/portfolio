@@ -65,6 +65,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@import '@/assets/style/modules/colors.scss';
 .input {
   display: inline-block;
   position: relative;

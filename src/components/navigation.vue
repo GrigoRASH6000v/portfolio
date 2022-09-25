@@ -47,6 +47,7 @@ export default {
 };
 </script>
 <style lang="scss">
+@import '@/assets/style/modules/colors.scss';
 .navigation {
   background-color: $black-2;
   width: 13rem;
