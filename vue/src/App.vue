@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     async getData(){
-      const response = await this.$axios.get('http://localhost:8626/api/users')
+      const response = await this.$axios.get('http://localhost:8080/api/users')
       console.log(response)
     }
   },

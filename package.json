@@ -1,0 +1,19 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "My portfolio web-site",
+  "main": "client/intex.html",
+  "scripts": {
+    "start": "node ./server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GrigoRASH6000v/portfolio.git"
+  },
+  "author": "Grigorij",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GrigoRASH6000v/portfolio/issues"
+  },
+  "homepage": "https://github.com/GrigoRASH6000v/portfolio#readme"
+}
